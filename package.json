@@ -8,7 +8,7 @@
     "dist",
     "index.d.ts"
   ],
-  "repository": "https://github.com/techniq/mui-virtualized-table",
+  "repository": "https://github.com/vitkuzmenko/mui-virtualized-table",
   "author": "Sean Lynch <techniq35@gmail.com>",
   "license": "MIT",
   "peerDependencies": {

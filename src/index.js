@@ -13,115 +13,102 @@ import { calcColumnWidth } from './utils';
 
 const FOOTER_BORDER_HEIGHT = 1;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   table: {
     boxSizing: 'border-box',
 
     '& .topLeftGrid': {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'dark' ? 800 : 200],
-      borderBottom: `2px solid ${theme.palette.divider}`,
-      borderRight: `2px solid ${theme.palette.divider}`,
-      color: theme.palette.text.secondary,
-      fontSize: theme.typography.pxToRem(12),
+      borderBottom: `1px solid ${theme.palette.divider}`,
+      borderRight: `1px solid ${theme.palette.divider}`,
 
       // Hide scrollbars on Chrome/Safari/IE
       '&::-webkit-scrollbar': {
-        display: 'none'
+        display: 'none',
       },
-      '-ms-overflow-style': 'none'
+      '-ms-overflow-style': 'none',
     },
 
     '& .topRightGrid': {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'dark' ? 800 : 200],
-      borderBottom: `2px solid ${theme.palette.divider}`,
-      color: theme.palette.text.secondary,
-      fontSize: theme.typography.pxToRem(12),
+      borderBottom: `1px solid ${theme.palette.divider}`,
 
       // Hide scrollbars on Chrome/Safari/IE
       '&::-webkit-scrollbar': {
-        display: 'none'
+        display: 'none',
       },
-      '-ms-overflow-style': 'none'
+      '-ms-overflow-style': 'none',
     },
 
     '& .bottomLeftGrid': {
-      backgroundColor:
-        theme.palette.grey[theme.palette.type === 'dark' ? 800 : 200],
-      borderRight: `2px solid ${theme.palette.divider}`,
-      color: theme.palette.text.secondary,
-      fontSize: theme.typography.pxToRem(13),
+      borderRight: `1px solid ${theme.palette.divider}`,
 
       // Hide scrollbars on Chrome/Safari/IE
       '&::-webkit-scrollbar': {
-        display: 'none'
+        display: 'none',
       },
-      '-ms-overflow-style': 'none'
+      '-ms-overflow-style': 'none',
     },
 
     '& .bottomRightGrid': {
       color: theme.palette.text.primary,
       fontSize: theme.typography.pxToRem(13),
-      outline: 'none' // See: https://github.com/bvaughn/react-virtualized/issues/381
-    }
+      outline: 'none', // See: https://github.com/bvaughn/react-virtualized/issues/381
+    },
   },
   cell: {
     boxSizing: 'border-box',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   cellClickable: {
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   cellSelected: {
     backgroundColor:
-      theme.palette.grey[theme.palette.type === 'dark' ? 900 : 100]
+      theme.palette.grey[theme.palette.type === 'dark' ? 900 : 100],
   },
   cellHovered: {
     backgroundColor:
-      theme.palette.grey[theme.palette.type === 'dark' ? 800 : 200]
+      theme.palette.grey[theme.palette.type === 'dark' ? 800 : 200],
   },
   cellDisabled: {
-    opacity: 0.5
+    opacity: 0.5,
   },
   cellContents: {
     width: '100%',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
-    textOverflow: 'ellipsis'
+    textOverflow: 'ellipsis',
   },
   cellHeader: {
-    fontSize: theme.typography.pxToRem(12),
     fontWeight: theme.typography.fontWeightMedium,
-    color: theme.palette.text.secondary
+    color: theme.palette.text.primary,
   },
   cellInLastColumn: {
-    paddingRight: theme.spacing(3)
+    paddingRight: theme.spacing(3),
   },
   cellInLastRow: {
-    borderBottom: 'none'
+    borderBottom: 'none',
   },
   footer: {
-    borderTop: `${FOOTER_BORDER_HEIGHT}px solid ${theme.palette.divider}`
+    borderTop: `${FOOTER_BORDER_HEIGHT}px solid ${theme.palette.divider}`,
   },
   dragHandle: {
     flex: '0 0 16px',
     zIndex: 2,
     cursor: 'col-resize',
-    color: '#0085ff'
+    color: '#0085ff',
   },
   DragHandleActive: {
     color: '#0b6fcc',
-    zIndex: 3
+    zIndex: 3,
   },
   DragHandleIcon: {
     flex: '0 0 12px',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 }));
 
 const calculateWidths = ({ resizable, columns: Columns }) => {
@@ -129,7 +116,7 @@ const calculateWidths = ({ resizable, columns: Columns }) => {
   if (resizable) {
     var initialWidth = 1;
     var columns = [];
-    Columns.forEach(c => {
+    Columns.forEach((c) => {
       if (c.width) {
         widths[c.name] = 0.1;
         initialWidth = initialWidth - 0.1;
@@ -137,7 +124,7 @@ const calculateWidths = ({ resizable, columns: Columns }) => {
         columns.push(c);
       }
     });
-    columns.forEach(c => {
+    columns.forEach((c) => {
       widths[c.name] = initialWidth / columns.length;
     });
   }
